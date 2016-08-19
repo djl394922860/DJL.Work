@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "ActiveAgain";
+    Layout = "~/Views/Shared/_LoginOrRegisterLayout.cshtml";
+}
+@section Header{
+    
+}
+<div class="container">
+    <div class="form_sign">
+        <h5 class="header">重新激活</h5>
+        <div class="form-group">
+            <label for="email">注册邮箱：</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+        </div>
+        <div id="warper">
+            <div id="warning" style="display:none;" class="alert alert-warning">
+                请填写您的邮箱，我们将发送邮件到您的邮箱，以便激活使用！
+            </div>
+            <div id="danger" style="display:none;" class="alert alert-danger">
+                邮箱格式错误!
+            </div>
+            <div id="success" style="display:none;" class="alert alert-success" role="alert">
+                邮件已发送，请查看您的邮箱，确认激活！
+            </div>
+        </div>
+        <div class="alert alert-info">
+            若垃圾邮件中没有找到，并且上时间没收到，请联系站长~
+        </div>
+        <button id="btnActiveAgain" class="btn btn-primary btn-block">确认信息</button>
+        <a class="extra" href="@Url.Action("Register","Home")">注册</a><a class="extra" href="@Url.Action("Login","Home")">登录</a><a class="extra" href="/">回到首页</a>
+    </div>
+</div>
+
+@section Footer{
+    @Scripts.Render("~/Content/js/ActiveAgain.js")
+}

@@ -1,0 +1,30 @@
+﻿body {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background: rgb(70,70,70) url('/Content/Images/mm.jpg') no-repeat fixed top;
+    background-size: 100% 100%;
+}
+
+.form_sign {
+    width: 350px;
+    margin: 0 auto;
+    padding: 25px;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.header {
+    font-family: '微软雅黑';
+    margin: 0 0 10px;
+    text-align: center;
+}
+
+.extra {
+    font-size: 12px;
+    display: inline-block;
+    margin: 10px 10px 0 0;
+}
+
+h5 {
+    color: #1abc9c;
+}

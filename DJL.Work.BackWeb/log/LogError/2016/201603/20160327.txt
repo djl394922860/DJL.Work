@@ -1,0 +1,70 @@
+
+ 
+记录时间：2016-03-27 16:41:14,091 
+线程ID:[6] 
+日志级别：  ERROR 
+错误描述：索引(从零开始)必须大于或等于零，且小于参数列表的大小。
+ 
+
+ 
+记录时间：2016-03-27 16:42:29,449 
+线程ID:[12] 
+日志级别：  ERROR 
+错误描述：索引(从零开始)必须大于或等于零，且小于参数列表的大小。
+ 
+
+ 
+记录时间：2016-03-27 17:12:07,406 
+线程ID:[36] 
+日志级别：  ERROR 
+错误描述：Error getting value from 'RoleInfos' on 'System.Data.Entity.DynamicProxies.AdminInfo_EEB728138635F0D1DC234509781BF18F2F4C9D6E3637EECC6777899E5B167101'.
+ 
+
+ 
+记录时间：2016-03-27 17:13:18,579 
+线程ID:[36] 
+日志级别：  ERROR 
+错误描述：Error getting value from 'RoleInfos' on 'System.Data.Entity.DynamicProxies.AdminInfo_EEB728138635F0D1DC234509781BF18F2F4C9D6E3637EECC6777899E5B167101'.
+ 
+
+ 
+记录时间：2016-03-27 17:13:31,620 
+线程ID:[36] 
+日志级别：  ERROR 
+错误描述：Error getting value from 'RoleInfos' on 'System.Data.Entity.DynamicProxies.AdminInfo_EEB728138635F0D1DC234509781BF18F2F4C9D6E3637EECC6777899E5B167101'.
+ 
+
+ 
+记录时间：2016-03-27 17:14:35,363 
+线程ID:[25] 
+日志级别：  ERROR 
+错误描述：Error getting value from 'RoleInfos' on 'System.Data.Entity.DynamicProxies.AdminInfo_EEB728138635F0D1DC234509781BF18F2F4C9D6E3637EECC6777899E5B167101'.
+ 
+
+ 
+记录时间：2016-03-27 17:15:41,426 
+线程ID:[26] 
+日志级别：  ERROR 
+错误描述：Error getting value from 'RoleInfos' on 'System.Data.Entity.DynamicProxies.AdminInfo_EEB728138635F0D1DC234509781BF18F2F4C9D6E3637EECC6777899E5B167101'.
+ 
+
+ 
+记录时间：2016-03-27 17:18:35,383 
+线程ID:[11] 
+日志级别：  ERROR 
+错误描述：Error getting value from 'RoleInfos' on 'System.Data.Entity.DynamicProxies.AdminInfo_EEB728138635F0D1DC234509781BF18F2F4C9D6E3637EECC6777899E5B167101'.
+ 
+
+ 
+记录时间：2016-03-27 17:19:34,319 
+线程ID:[12] 
+日志级别：  ERROR 
+错误描述：Error getting value from 'RoleInfos' on 'System.Data.Entity.DynamicProxies.AdminInfo_EEB728138635F0D1DC234509781BF18F2F4C9D6E3637EECC6777899E5B167101'.
+ 
+
+ 
+记录时间：2016-03-27 17:19:45,337 
+线程ID:[12] 
+日志级别：  ERROR 
+错误描述：Error getting value from 'RoleInfos' on 'System.Data.Entity.DynamicProxies.AdminInfo_EEB728138635F0D1DC234509781BF18F2F4C9D6E3637EECC6777899E5B167101'.
+ 

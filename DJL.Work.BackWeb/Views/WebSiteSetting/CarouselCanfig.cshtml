@@ -1,0 +1,140 @@
+﻿@Styles.Render("~/Content/css/websetting/carouse.css")
+
+@*表格*@
+<div style="width:960px;height:470px;">
+    <table id="tableCarouselCanfig"></table>
+</div>
+
+@*菜单项*@
+<div id="tbMenu">
+    <a id="btn_carouse_refresh" href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-reload',plain:false,text:'刷新',size:'large'"></a>
+    <a id="btn_carouse_add" href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:false,text:'添加',size:'large'"></a>
+    <a id="btn_carouse_edit" href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:false,text:'修改',size:'large'"></a>
+    <a id="btn_carouse_look" href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:false,text:'查看大图以及路径信息',size:'large'"></a>
+</div>
+
+@*查看大图*@
+<div id="div_carouse_show" title="大图查看以及路近详情" class="easyui-dialog" data-options="iconCls:'icon-search',resizable:false,modal:true,closed:true,buttons:'#btns_carouse_show'" style="height:600px;width:800px;">
+    <div>
+        <div>图片编号：<p style="margin-left:15px"></p></div>
+        <div>相对路径：<p id="p_carouse_path" style="margin-left:15px;"></p></div>
+        <div>物理路径：<p style="margin-left:15px;"></p></div>
+    </div>
+    <img style="margin-left:15px;" width="750" height="350" />
+</div>
+
+<div id="btns_carouse_show">
+    <div style="float:left">
+        <a style="margin-left:15px;" href="javascript:void(0);" class="easyui-linkbutton" onclick="window.Carousel.preImage();">上一个</a>
+        <a style="margin-left:10px;" href="javascript:void(0);" class="easyui-linkbutton" onclick="window.Carousel.nextImage();">下一下</a>
+    </div>
+    <a href="javascript:void(0);" class="easyui-linkbutton" onclick="$('#div_carouse_show').dialog('close');">关闭</a>
+</div>
+
+@*添加*@
+<div id="div_carouse_add" class="easyui-dialog" title="轮播添加项" style="width:450px;height:350px;"
+     data-options="iconCls:'icon-save',resizable:false,modal:true,closed:true,buttons:'#btns_carouse_add'">
+    <form id="form_save_carouse" enctype="multipart/form-data" method="post">
+        @Html.AntiForgeryToken()
+        <div class="form-item">
+            <label>音乐歌曲名：</label>
+            <input class="easyui-textbox" data-options="prompt:'请输入音乐歌曲名...',
+                   icons:[{
+		           iconCls:'icon-clear',
+		           handler: function(e){
+			           $(e.data.target).textbox('clear');
+		           }}],
+                   required:true,
+                   validType:['length[1,18]'],
+                   width:180,height:25" id="txtMusicName" name="MusicName" />
+        </div>
+        <div class="form-item">
+            <label>歌曲简单描述：</label>
+            <input class="easyui-textbox" data-options="prompt:'请输入歌曲简单描述...',
+                   icons:[{
+		           iconCls:'icon-clear',
+		           handler: function(e){
+			           $(e.data.target).textbox('clear');
+		           }}],
+                   required:true,
+                   validType:['length[1,18]'],
+                   width:180,height:25" id="txtMusicDescription" name="MusicDescription" />
+        </div>
+        <div class="form-item">
+            <label>轮播顺序号:</label>
+            <input class="easyui-slider" data-options="showTip:true,rang:true,min:0,max:10,value:0,width:330" id="txtOrder" name="Order" />
+        </div>
+        <div class="form-item">
+            <label>图片上传：</label>
+            <input class="easyui-filebox" data-options="buttonText:'选择图片文件',buttonIcon:'icon-search',buttonAlign:'right',required:true,width:180,height:35" id="txtUpload" name="ImageData" />
+        </div>
+        <div class="form-item">
+            <label>是否启用:</label>
+            <input id="txtAvailable" class="easyui-switchbutton">
+        </div>
+        <input type="hidden" id="hid_txt_available" name="Available" />
+    </form>
+</div>
+
+<div id="btns_carouse_add">
+    <a href="javascript:void(0);" class="easyui-linkbutton" onclick="window.Carousel.addSaveCarouse();">保存</a>
+    <a href="javascript:void(0);" class="easyui-linkbutton" onclick="$('#div_carouse_add').dialog('close');">关闭</a>
+</div>
+
+@*修改*@
+<div id="div_carouse_edit" class="easyui-dialog" title="轮播修改" style="width:450px;height:550px;" data-options="iconCls:'icon-edit',resizable:false,modal:true,closed:true,buttons:'#btns_carouse_edit'">
+    <form id="form_edit_carouse" enctype="multipart/form-data" method="post">
+        @Html.AntiForgeryToken()
+        <input type="hidden" id="hid_txt_carouseId" name="Id" />
+        <div class="form-item">
+            <label>音乐歌曲名：</label>
+            <input class="easyui-textbox" data-options="prompt:'请输入音乐歌曲名...',
+                   icons:[{
+		           iconCls:'icon-clear',
+		           handler: function(e){
+			           $(e.data.target).textbox('clear');
+		           }}],
+                   required:true,
+                   validType:['length[1,18]'],
+                   width:180,height:25" id="txtMusicNameEdit" name="MusicName" />
+        </div>
+        <div class="form-item">
+            <label>歌曲简单描述：</label>
+            <input class="easyui-textbox" data-options="prompt:'请输入歌曲简单描述...',
+                   icons:[{
+		           iconCls:'icon-clear',
+		           handler: function(e){
+			           $(e.data.target).textbox('clear');
+		           }}],
+                   required:true,
+                   validType:['length[1,18]'],
+                   width:180,height:25" id="txtMusicDescriptionEdit" name="MusicDescription" />
+        </div>
+        <div class="form-item">
+            <label>轮播顺序号:</label>
+            <input class="easyui-slider" data-options="showTip:true,rang:true,min:0,max:10,value:0,width:330" id="txtOrderEdit" name="Order" />
+        </div>
+        <div class="form-item">
+            <label>图片上传：</label>
+            <input class="easyui-filebox" data-options="buttonText:'选择图片文件',buttonIcon:'icon-search',buttonAlign:'right',required:false,width:180,height:35" id="txtUploadEdit" name="ImageData" />
+        </div>
+        <div class="form-item">
+            <label>是否启用:</label>
+            <input id="txtAvailableEdit" class="easyui-switchbutton">
+        </div>
+        <div class="form-item">
+            <label>轮播图预览:</label>
+            <div>
+                <img id="imgImageData" width="335" height="160" alt="空" />
+            </div>
+        </div>
+        <input type="hidden" id="hid_txt_availableEdit" name="Available" />
+    </form>
+</div>
+
+<div id="btns_carouse_edit">
+    <a href="javascript:void(0);" class="easyui-linkbutton" onclick="window.Carousel.editSaveCarouse();">保存</a>
+    <a href="javascript:void(0);" class="easyui-linkbutton" onclick="$('#div_carouse_edit').dialog('close');">关闭</a>
+</div>
+
+@Scripts.Render("~/Content/js/webStieSetting_carouselCanfig.js")

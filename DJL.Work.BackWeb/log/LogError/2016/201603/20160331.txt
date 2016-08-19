@@ -1,0 +1,42 @@
+
+ 
+记录时间：2016-03-31 00:48:02,893 
+线程ID:[12] 
+日志级别：  ERROR 
+错误描述：未将对象引用设置到对象的实例。
+ 
+
+ 
+记录时间：2016-03-31 00:48:27,099 
+线程ID:[12] 
+日志级别：  ERROR 
+错误描述：未将对象引用设置到对象的实例。
+ 
+
+ 
+记录时间：2016-03-31 00:51:36,717 
+线程ID:[13] 
+日志级别：  ERROR 
+错误描述：An error occurred while updating the entries. See the inner exception for details.
+ 
+
+ 
+记录时间：2016-03-31 00:54:09,851 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：An error occurred while updating the entries. See the inner exception for details.
+ 
+
+ 
+记录时间：2016-03-31 21:45:20,448 
+线程ID:[89] 
+日志级别：  ERROR 
+错误描述：未将对象引用设置到对象的实例。
+ 
+
+ 
+记录时间：2016-03-31 21:48:05,981 
+线程ID:[9] 
+日志级别：  ERROR 
+错误描述：未将对象引用设置到对象的实例。
+ 

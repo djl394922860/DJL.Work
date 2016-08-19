@@ -1,0 +1,20 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+@{
+    ViewBag.Title = "Error";
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <h1>服务器出错误了:</h1><br />
+    <h3>错误控制器：@Model.ControllerName</h3><br />
+    <h3>错误执行方法：@Model.ActionName</h3><br />
+    <p>错误消息：@Model.Exception.Message</p><br />
+    <a href="/Person">返回首页</a>
+</body>
+</html>

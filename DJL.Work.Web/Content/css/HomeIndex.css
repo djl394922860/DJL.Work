@@ -1,0 +1,92 @@
+﻿#divCarousel h3 {
+    color: #ffffff;
+}
+
+#divCarousel p {
+    color: #ffffff;
+}
+
+.movie-item-out {
+    padding: 0 8px;
+}
+
+.movie-item {
+    border-radius: 3px;
+    background: #FFF;
+    padding: 10px 10px;
+    margin-bottom: 15px;
+}
+
+    .movie-item:hover {
+        -moz-box-shadow: 2px 2px 10px #CCC;
+        -webkit-box-shadow: 2px 2px 10px #CCC;
+        box-shadow: 2px 2px 10px #CCC;
+    }
+
+.indexhot {
+    border: 1px solid #ccc;
+    padding: 1px;
+    width: 100%;
+    height: 200px;
+}
+
+@media (min-width: 992px) {
+    .indexhot {
+        height: 165px;
+    }
+}
+
+
+.tag {
+    background: #337AB7;
+    font-size: 12px;
+    padding: 0 5px;
+    color: #FFF;
+    border: none;
+    right: 2px;
+    bottom: 2px;
+    position: absolute;
+}
+
+.meta {
+    margin-top: 5px;
+}
+
+.movie-name {
+    font-size: 14px;
+    color: #333;
+}
+
+em {
+    font-size: 12px;
+    font-style: normal;
+    color: #8c8c8c;
+}
+
+.hotimg {
+    border: 1px solid #ccc;
+    height: 285px;
+    padding: 1px;
+    width: 100%;
+}
+
+.otherinfo {
+    margin-top: 3px;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 18px;
+    height: 18px;
+    overflow: hidden;
+    width: 100%;
+    color: #7E7E7E;
+}
+
+.movietype {
+    display: inline-block;
+    padding: 0px 5px;
+    border-radius: 2px;
+    color: #888;
+    font-size: 12px;
+    background-color: #D8D8D8;
+    margin-right: 5px;
+}

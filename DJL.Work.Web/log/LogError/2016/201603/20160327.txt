@@ -1,0 +1,42 @@
+
+ 
+记录时间：2016-03-27 02:38:04,715 
+线程ID:[482] 
+日志级别：  ERROR 
+错误描述：c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\vs\61057117\6a042a71\App_Web__layout.cshtml.639c3968.bsdb7hqa.0.cs(1380): error CS1513: 应输入 }
+ 
+
+ 
+记录时间：2016-03-27 02:39:28,614 
+线程ID:[485] 
+日志级别：  ERROR 
+错误描述：c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\vs\61057117\6a042a71\App_Web__layout.cshtml.639c3968.nlrqulef.0.cs(1380): error CS1513: 应输入 }
+ 
+
+ 
+记录时间：2016-03-27 02:40:50,926 
+线程ID:[484] 
+日志级别：  ERROR 
+错误描述：c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\vs\61057117\6a042a71\App_Web__layout.cshtml.639c3968.plo6std0.0.cs(1380): error CS1513: 应输入 }
+ 
+
+ 
+记录时间：2016-03-27 02:43:50,092 
+线程ID:[484] 
+日志级别：  ERROR 
+错误描述：c:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\vs\61057117\6a042a71\App_Web__layout.cshtml.639c3968.3x0woo74.0.cs(1380): error CS1513: 应输入 }
+ 
+
+ 
+记录时间：2016-03-27 02:44:30,094 
+线程ID:[484] 
+日志级别：  ERROR 
+错误描述：以下各节已定义，但尚未为布局页“~/Views/Shared/_Layout.cshtml”呈现:“Script”。
+ 
+
+ 
+记录时间：2016-03-27 15:44:29,756 
+线程ID:[14] 
+日志级别：  ERROR 
+错误描述：序列不包含任何元素
+ 

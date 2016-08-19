@@ -1,0 +1,17 @@
+﻿#form_save_role {
+    font-size: 16px;
+}
+
+#form_edit_role {
+    font-size: 16px;
+}
+
+.form-item {
+    margin: 7px 0 20px 35px;
+}
+
+    .form-item label {
+        width: 120px;
+        display: inline-block;
+        margin-right: 20px;
+    }

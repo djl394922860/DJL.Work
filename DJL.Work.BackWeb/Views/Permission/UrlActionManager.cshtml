@@ -1,0 +1,145 @@
+﻿@Styles.Render("~/Content/css/permission/action.css")
+
+@*表格*@
+<div style="width:960px;height:470px;">
+    <table id="tableActionManager"></table>
+</div>
+
+@*菜单项*@
+<div id="tbMenu_action">
+    <a id="btn_action_refresh" href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-reload',plain:false,text:'刷新',size:'large'"></a>
+    <a id="btn_action_add" href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:false,text:'添加',size:'large'"></a>
+    <a id="btn_action_edit" href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:false,text:'修改',size:'large'"></a>
+    <a id="btn_action_lookRoles" href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:false,text:'查看当前权限所属角色',size:'large'"></a>
+    @{
+        Html.RenderPartial("_SearchForPermission");
+    }
+</div>
+
+@*查看权限所属角色*@
+<div id="div_action_lookRoles" title="查看权限所属角色" class="easyui-dialog" data-options="iconCls:'icon-search',resizable:false,modal:true,closed:true,buttons:'#btns_action_lookRoles'" style="height:500px;width:700px;">
+    <div id="div_action_roles_list"></div>
+</div>
+
+<div id="btns_action_lookRoles">
+    <a href="javascript:void(0);" class="easyui-linkbutton" onclick="$('#div_action_lookRoles').dialog('close');">关闭</a>
+</div>
+
+@*添加*@
+<div id="div_action_add" class="easyui-dialog" title="角色添加" style="width:500px;height:500px;"
+     data-options="iconCls:'icon-save',resizable:false,modal:true,closed:true,buttons:'#btns_action_add'">
+    <form id="form_save_action" method="post">
+        @Html.AntiForgeryToken()
+        <div class="form-item">
+            <label>权限名：</label>
+            <input class="easyui-textbox" data-options="prompt:'请输入权限名...',
+                   icons:[{
+		           iconCls:'icon-clear',
+		           handler: function(e){
+			           $(e.data.target).textbox('clear');
+		           }}],
+                   required:true,
+                   validType:['length[1,18]'],
+                   width:250,height:25" id="txt_actionName" name="ActionName" />
+        </div>
+        <div class="form-item">
+            <label>是否启用:</label>
+            <input id="txt_actionAvailable" class="easyui-switchbutton">
+        </div>
+        <input type="hidden" id="hid_txt_actionAvailable" name="Available" />
+        <div class="form-item">
+            <label>权限请求方式:</label>
+            <input id="txt_actionMethod" name="ActionMethod" class="easyui-combobox" data-options="required:true,multiple:false,editable:false,valueField:'id',textField:'text',width:250,height:30" />
+        </div>
+        <div class="form-item">
+            <label>权限路径：</label>
+            <input class="easyui-textbox" data-options="prompt:'请输入权限请求路径...',
+                   icons:[{
+		           iconCls:'icon-clear',
+		           handler: function(e){
+			           $(e.data.target).textbox('clear');
+		           }}],
+                   required:true,
+                   validType:['length[1,50]'],
+                   width:250,height:25" id="txt_actionRequestUrl" name="ActionRequestUrl" />
+        </div>
+        <div class="form-item">
+            <label>备注:</label>
+            <input id="txt_actionRemark" name="Remark" class="easyui-textbox" data-options="prompt:'请输入您的备注...',multiline:true,
+                   icons:[{
+		           iconCls:'icon-clear',
+		           handler: function(e){
+			           $(e.data.target).textbox('clear');
+		           }}],
+                   required:true,
+                   validType:['length[1,100]'],
+                   width:250,height:200" />
+        </div>
+    </form>
+</div>
+
+<div id="btns_action_add">
+    <a href="javascript:void(0);" class="easyui-linkbutton" onclick="window.Action.addSaveAction();">保存</a>
+    <a href="javascript:void(0);" class="easyui-linkbutton" onclick="$('#div_action_add').dialog('close');">关闭</a>
+</div>
+
+@*修改*@
+<div id="div_action_edit" class="easyui-dialog" title="权限修改" style="width:500px;height:500px;"
+     data-options="iconCls:'icon-save',resizable:false,modal:true,closed:true,buttons:'#btns_action_edit'">
+    <form id="form_edit_action" method="post">
+        @Html.AntiForgeryToken()
+        <input id="hid_txt_edit_actionId" type="hidden" name="ActionId" />
+        <div class="form-item">
+            <label>权限名：</label>
+            <input class="easyui-textbox" data-options="prompt:'请输入权限名...',
+                   icons:[{
+		           iconCls:'icon-clear',
+		           handler: function(e){
+			           $(e.data.target).textbox('clear');
+		           }}],
+                   required:true,
+                   validType:['length[1,18]'],
+                   width:250,height:25" id="txt_actionName_edit" name="ActionName" />
+        </div>
+        <div class="form-item">
+            <label>是否启用:</label>
+            <input id="txt_actionAvailable_edit" class="easyui-switchbutton">
+        </div>
+        <input type="hidden" id="hid_txt_actionAvailable_edit" name="Available" />
+        <div class="form-item">
+            <label>权限请求方式:</label>
+            <input id="txt_actionMethod_edit" name="ActionMethod" class="easyui-combobox" data-options="required:true,multiple:false,editable:false,valueField:'id',textField:'text',width:250,height:30" />
+        </div>
+        <div class="form-item">
+            <label>权限路径：</label>
+            <input class="easyui-textbox" data-options="prompt:'请输入权限请求路径...',
+                   icons:[{
+		           iconCls:'icon-clear',
+		           handler: function(e){
+			           $(e.data.target).textbox('clear');
+		           }}],
+                   required:true,
+                   validType:['length[1,50]'],
+                   width:250,height:25" id="txt_actionRequestUrl_edit" name="ActionRequestUrl" />
+        </div>
+        <div class="form-item">
+            <label>备注:</label>
+            <input id="txt_actionRemark_edit" name="Remark" class="easyui-textbox" data-options="prompt:'请输入您的备注...',multiline:true,
+                   icons:[{
+		           iconCls:'icon-clear',
+		           handler: function(e){
+			           $(e.data.target).textbox('clear');
+		           }}],
+                   required:true,
+                   validType:['length[1,100]'],
+                   width:250,height:200" />
+        </div>
+    </form>
+</div>
+
+<div id="btns_action_edit">
+    <a href="javascript:void(0);" class="easyui-linkbutton" onclick="window.Action.editSaveAction();">保存</a>
+    <a href="javascript:void(0);" class="easyui-linkbutton" onclick="$('#div_action_edit').dialog('close');">关闭</a>
+</div>
+
+@Scripts.Render("~/Content/js/permission/action.js")

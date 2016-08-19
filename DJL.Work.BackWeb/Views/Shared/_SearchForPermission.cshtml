@@ -1,0 +1,13 @@
+﻿<div style="float:right">
+    <label style="margin-right:5px;">Name搜索</label>
+    <input class="easyui-textbox" data-options="prompt:'请输入搜索值...',
+                   icons:[{
+		           iconCls:'icon-clear',
+		           handler: function(e){
+			           $(e.data.target).textbox('clear');
+		           }}],
+                   required:false,
+                   validType:['length[1,18]'],
+                   width:180,height:30" id="txt_shared_search" />
+    <a style="margin-right:5px;" id="btn_shared_search" href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:false,text:'搜索',size:'large'"></a>
+</div>

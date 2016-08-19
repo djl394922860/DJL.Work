@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/mycss")
+    @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("Header", required: false)
+</head>
+<body class="easyui-layout">
+    @RenderBody()
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/easyui")
+    @RenderSection("Footer", required: false)
+</body>
+</html>

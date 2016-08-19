@@ -1,0 +1,13 @@
+﻿.form-control {
+    display: inline-block;
+    width: 84%;
+}
+
+i {
+    float: right;
+    margin-top: 5px;
+}
+
+small {
+    margin-left: 50px;
+}

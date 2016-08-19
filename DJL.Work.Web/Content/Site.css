@@ -1,0 +1,87 @@
+﻿body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;
+}
+
+body, html {
+    font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans","wenquanyi micro hei","Hiragino Sans GB", "Hiragino Sans GB W3", Arial, sans-serif;
+    background: #F6F5F6;
+}
+
+@media (min-width: 1200px) {
+    .container {
+        width: 990px !important;
+    }
+}
+
+
+.header-help {
+    color: #777;
+    font-size: 12px;
+}
+
+.logo {
+    display: inline-block;
+    height: 50px;
+    width: 210px;
+}
+
+.footer {
+    font-size: 12px;
+    border-top: 1px solid #DDD;
+    text-align: center;
+    margin-top: 25px;
+    padding: 20px 10px;
+    color: #666;
+    background-color: #EEE;
+    margin-bottom: 0;
+}
+
+
+/*returnTop*/
+p#back-to-top {
+    position: fixed;
+    display: none;
+    bottom: 30px;
+    right: 30px;
+}
+
+    p#back-to-top a {
+        text-align: center;
+        text-decoration: none;
+        color: #d1d1d1;
+        display: block;
+        width: 78px;
+        /*使用CSS3中的transition属性给跳转链接中的文字添加渐变效果*/
+        -moz-transition: color 1s;
+        -webkit-transition: color 1s;
+        -o-transition: color 1s;
+    }
+
+        p#back-to-top a:hover {
+            color: #979797;
+        }
+
+        p#back-to-top a span {
+            background: transparent url(/Content/Images/go-to-top.png) no-repeat;
+            border-radius: 6px;
+            display: block;
+            height: 105px;
+            width: 77px;
+            margin-bottom: 5px;
+            /*使用CSS3中的transition属性给<span>标签背景颜色添加渐变效果*/
+            -moz-transition: background 1s;
+            -webkit-transition: background 1s;
+            -o-transition: background 1s;
+        }
+
+#back-to-top a:hover span {
+    background: transparent url(/Content/Images/go-to-top.png) no-repeat;
+}
+
+h5 {
+    color: #1abc9c;
+}

@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LoginOrRegisterLayout.cshtml";
+}
+
+@section Header{
+    @Styles.Render("~/Content/css/login.css")
+    @Styles.Render("~/Content/BootstrapValidator/css/bootstrapValidator.min.css")
+}
+
+<div class="container">
+    <form id="formLogin" class="form_sign" role="form" action="@Url.Action("Login","Home")" method="post">
+        <h5 class="header">用户登录</h5>
+        <div style="display:none" id="alert" class="alert alert-warning" role="alert"><p></p><span class="glyphicon glyphicon-remove pull-right" style="margin-top:-20px;cursor:pointer;"></span></div>
+        <div class="form-group">
+            <label for="email">邮箱：</label>
+            <input type="email" class="form-control" id="email" name="Email" placeholder="Enter email">
+        </div>
+        <div class="form-group">
+            <label for="pwd">密码：</label>
+            <input type="password" class="form-control" id="pwd" name="Password" placeholder="Password">
+        </div>
+        <div class="form-group">
+            <label class="checkbox" for="ckbRemember">
+                <input name="Remember" type="checkbox" id="ckbRemember" checked="checked" data-toggle="checkbox" class="custom-checkbox"><span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span>
+                记住登录
+            </label>
+        </div>
+        @Html.AntiForgeryToken()
+        <button type="submit" class="btn btn-primary btn-block">确认信息</button>
+        <a class="extra" href="@Url.Action("Register","Home")">注册</a><a class="extra" href="@Url.Action("Forget","Home")">找回密码？</a><a class="extra" href="/">回到首页</a><a class="extra" href="@Url.Action("ActiveAgain","Home")">重新激活</a>
+    </form>
+</div>
+
+@section Footer{
+    @Scripts.Render("~/Content/BootstrapValidator/js/bootstrapValidator.min.js")
+    @Scripts.Render("~/Content/js/login.js")
+}

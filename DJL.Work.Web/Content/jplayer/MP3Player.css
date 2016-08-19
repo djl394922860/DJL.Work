@@ -1,0 +1,119 @@
+.jp-audio {
+    width: 484px;
+    height: 91px;
+    display: inline-block;
+    text-shadow: 0 1px 0 #fff;
+    background: url(bg.png) no-repeat 0px 0px;
+}
+
+.jp-interface {
+    width: 480px;
+    height: 85px;
+    position: relative;
+}
+
+.jp-controls,
+.jp-controls li {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+.jp-progress {
+    width: 387px;
+    height: 14px;
+    position: absolute;
+    top: 36px;
+    left: 80px;
+}
+
+.jp-seek-bar {
+    height: 14px;
+    background: url(bg.png) no-repeat 1px -132px;
+}
+
+.jp-play-bar {
+    height: 11px;
+    background: url(bg.png) no-repeat 0px -110px;
+}
+
+.jp-volume {
+    width: 75px;
+    height: 15px;
+    position: absolute;
+    top: 57px;
+    left: 82px;
+}
+
+.jp-volume-ico {
+    width: 10px;
+    height: 15px;
+    float: left;
+    background: url(bg.png) no-repeat -176px -213px;
+}
+
+.jp-volume-bar {
+    width: 61px;
+    height: 5px;
+    margin: 5px 0 0 4px;
+    cursor: pointer;
+    float: left;
+    background: url(bg.png) no-repeat -176px -181px;
+}
+
+.jp-volume-bar-value {
+    width: 61px;
+    height: 4px;
+    background: url(bg.png) no-repeat -176px -167px;
+}
+
+.jp-play,
+.jp-pause {
+    display: block;
+    position: absolute;
+    overflow: hidden;
+    text-indent: -9999px;
+    width: 63px;
+    height: 63px;
+    top: 8px;
+    left: 3px;
+}
+
+.jp-play {
+    background: url(bg.png) no-repeat -3px -146px;
+}
+
+    .jp-play:hover {
+        background: url(bg.png) no-repeat -3px -201px;
+    }
+
+.jp-pause {
+    background: url(bg.png) no-repeat -78px -145px;
+}
+
+    .jp-pause:hover {
+        background: url(bg.png) no-repeat -78px -200px;
+    }
+
+.jp-time-holder {
+    color: #4c4c4c;
+    font-size: 12px;
+    position: absolute;
+    top: 55px;
+    right: 16px;
+}
+
+.jp-title {
+    width: 387px;
+    font-size: 12px;
+    color: #4c4c4c;
+    position: absolute;
+    top: 15px;
+    left: 82px;
+}
+
+.jp-no-solution {
+    line-height: 85px;
+    padding-left: 90px;
+    font-size: 14px;
+}

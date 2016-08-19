@@ -1,0 +1,123 @@
+﻿@model DJL.Work.Web.Models.UserSessionModel
+
+
+
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    @*上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后*@
+    <title>@ViewBag.Title</title>
+    @*Bootstrap 核心 CSS 文件*@
+    @Styles.Render("~/Content/css")
+
+    @RenderSection(name: "Header", required: false)
+</head>
+<body>
+
+    @*返回顶部*@
+    <p id="back-to-top"><a href="#top"><span></span>返回顶部</a></p><a name="top"></a>
+    <!--Header-->
+    <div style="background:#fff">
+        <div style="padding: 5px 0; border-bottom: 1px solid #DDD;">
+            <div class="container">
+                <span class="header-help">欢迎来到Djl-Music-Online音乐网，我们因为音乐而相聚。</span>
+                <div class="pull-right">
+                    <a class="header-help" href="javascript:alert('快捷键Ctrl+D可以快速添加到收藏夹。');">Ctrl+D 加入收藏夹</a> -
+                    <a class="header-help" style="color:rgb(40,96,144);" href="http://wpa.qq.com/msgrd?v=3&amp;uin=972417907&amp;site=qq&amp;menu=yes">联系我的QQ</a> -
+                    <a class="header-help" style="color:rgb(40,96,144);" target="_blank" rel="nofollow" href="http://weibo.com/SkyCoders">关注我的微博</a>
+                </div>
+            </div>
+        </div>
+        <div class="container" style="padding:15px">
+            <a class="logo" href="@Url.Action("Index","Home")"><img width="210" height="50" src="@Url.Content("~/Content/images/logo.png")" class="img-circle" /></a>
+            <div class="pull-right">
+                <form class="navbar-form" target="_blank" accept-charset="utf-8" action="@Url.Action("Search", "Home")" method="get" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="searchMusic" placeholder="音乐搜索">
+                    </div>
+                    <button type="submit" class="btn btn-primary">搜索</button>
+                </form>
+            </div>
+        </div>
+        <nav id="nav_menu" class="navbar navbar-default navbar-inverse" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="@Url.Action("Index","Home")">首页</a></li>
+                        <li><a href="#">热门音乐</a></li>
+                        <li><a href="#">热门音乐MV</a></li>
+                        <li><a href="#">交流论坛</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">音乐排名<span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a target="_blank" href="#">酷狗TOP250</a>
+                                </li>
+                                <li>
+                                    <a target="_blank" href="#">最新热门</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="#">音乐专题</a></li>
+                    </ul>
+                    <div class="pull-right">
+                        <ul class="nav navbar-nav">
+                            @{
+                                var userSession = Model;
+                                if (userSession == null || string.IsNullOrEmpty(userSession.NickName))
+                                {
+                                    <li><a href="@Url.Action("Register","Home")">注册</a></li>
+                                    <li><a href="@Url.Action("Login","Home")">登录</a></li>
+                                }
+                                else
+                                {
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                            @userSession.NickName
+                                            <span class="caret"></span>
+                                        </a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li><a target="_blank" href="#">查看所有消息</a></li>
+                                            <li><a target="_blank" href="#">我喜欢的音乐</a></li>
+                                            <li><a target="_blank" href="@Url.Action("Index", "Home", new  { area="Person"})">个人中心</a></li>
+                                            <li><a href="@Url.Action("Logout","Home")">注销</a></li>
+                                        </ul>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!--Body-->
+    @RenderBody()
+
+    <!--Footer-->
+    <footer class="footer">
+        <p>免责声明：本网站所有内容都是靠程序在互联网上自动搜集而来，仅供测试和学习交流。<br>目前正在逐步删除和规避程序自动搜索采集到的不提供分享的版权音乐。</p>
+        <p>若侵犯了您的权益，请即时发邮件通知站长，邮箱：394922860@qq.com 万分感谢！</p>
+        <p>友情链接：<a target="_blank" href="http://www.kugou.com/">酷狗音乐网</a> - <a target="_blank" href="http://5sing.kugou.com">51原创音乐网</a> - <a target="_blank" href="http://music.baidu.com/">百度音乐下载</a></p>
+        <em><a href="/">♥ Music-djl★音乐网</a> · VERSION: 1.0.0</em>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Content/js/site_sroll.js")
+    @RenderSection("Footer", false)
+</body>
+</html>

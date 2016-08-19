@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "音乐";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Header{
+    <link href="~/Content/Jplayer/MP3Player.css" rel="stylesheet" />
+}
+
+<div class="container">
+    <div id="jplayer"></div>
+    <div id="jp_container_1" class="jp-audio">
+        <div class="jp-interface">
+            <div class="jp-title"></div>
+            <ul class="jp-controls">
+                <li><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>
+                <li><a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>
+            </ul>
+            <div class="jp-progress">
+                <div class="jp-seek-bar">
+                    <div class="jp-play-bar"></div>
+                </div>
+            </div>
+            <div class="jp-volume">
+                <div class="jp-volume-ico"></div>
+                <div class="jp-volume-bar">
+                    <div class="jp-volume-bar-value"></div>
+                </div>
+            </div>
+            <div class="jp-time-holder">
+                <span class="jp-current-time"></span> / <span class="jp-duration"></span>
+            </div>
+        </div>
+        <div class="jp-no-solution" style="display: none;">播放需要Flash插件支持，请<a href="http://get.adobe.com/flashplayer/" target="_blank">点击安装</a>。</div>
+    </div>
+</div>
+
+@section Footer{
+    <script src="~/Content/Jplayer/jquery.jplayer.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var mp3Url = 'http://localhost:33851/Content/Music/1.mp3';
+            // 播放初始化
+            $("#jplayer").jPlayer({
+                ready: function () {
+                    $(this).jPlayer("setMedia", {
+                        title: "逍遥叹",
+                        mp3: mp3Url
+                    });
+                },
+                ended: function () { // The $.jPlayer.event.ended event
+                    $(this).jPlayer("play"); // Repeat the media
+                },
+                swfPath: "/Content/Jplayer",
+                supplied: "mp3",
+                wmode: "window"
+            });
+        });
+    </script>
+}
+

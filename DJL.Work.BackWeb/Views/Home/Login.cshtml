@@ -1,0 +1,51 @@
+﻿@{
+    Layout = null;
+    ViewBag.Title = "音乐控制台登录";
+}
+
+<!DOCTYPE html>
+
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/HomeLogin.css")
+</head>
+<body>
+    <div id="warp">
+        <h1>欢迎登陆音乐管理后台</h1>
+        <div id="divForm">
+            <div class="left">
+                <img alt="空" src="/Content/Images/admin_left.jpg" />
+            </div>
+            <div class="right">
+                <form id="formLogin" method="post" action="/Home/Login">
+                    <div class="item">
+                        <label>帐号:</label>
+                        <input type="text" maxlength="32" autofocus name="AdminName" autocomplete="off" />
+                    </div>
+                    <div class="item">
+                        <label>密码:</label>
+                        <input type="password" maxlength="32" name="AdminPwd" autocomplete="off" />
+                    </div>
+                    <div class="item">
+                        <label>验证码:</label>
+                        <input id="txtCode" type="text" style="width:88px;" maxlength="6" name="ValidataCode" />
+                        <img id="imgCode" alt="验证码" style="cursor:pointer;width:50px;height:25px;" src="/Home/GetCodeImg" />
+                    </div>
+                    <div id="divMenu" class="item" style="padding-left:34px;padding-bottom:10px;">
+                        <input type="reset" value="清除" />
+                        <input type="submit" value="登录" />
+                    </div>
+                    @Html.AntiForgeryToken()
+                </form>
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/validata")
+    @Scripts.Render("~/Content/js/homelogin.js")
+</body>
+</html>

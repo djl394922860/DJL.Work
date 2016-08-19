@@ -1,0 +1,21 @@
+
+ 
+记录时间：2016-03-26 19:15:51,009 
+线程ID:[194] 
+日志级别：  ERROR 
+错误描述：The ObjectContext instance has been disposed and can no longer be used for operations that require a connection.
+ 
+
+ 
+记录时间：2016-03-26 19:15:59,019 
+线程ID:[194] 
+日志级别：  ERROR 
+错误描述：The ObjectContext instance has been disposed and can no longer be used for operations that require a connection.
+ 
+
+ 
+记录时间：2016-03-26 19:16:22,020 
+线程ID:[194] 
+日志级别：  ERROR 
+错误描述：The ObjectContext instance has been disposed and can no longer be used for operations that require a connection.
+ 

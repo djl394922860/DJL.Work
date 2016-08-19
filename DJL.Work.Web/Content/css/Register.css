@@ -1,0 +1,27 @@
+﻿.vcode {
+    display: inline-block;
+    width: 100px;
+    margin-right: 10px;
+}
+
+.form-control {
+    display: inline-block;
+    width: 99%;
+}
+
+i {
+    float: right;
+    margin-top: 5px;
+}
+
+.vcode {
+    width: 60%;
+}
+
+.form-control-feedback {
+    top: 40px;
+}
+
+.form-group {
+    margin-bottom: 5px;
+}

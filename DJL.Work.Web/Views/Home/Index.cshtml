@@ -1,0 +1,107 @@
+﻿@using DJL.Work.DataModel
+@{
+    ViewBag.Title = "音乐在线网";
+    var carousels = ViewBag.AllCarousels as List<CarouselCanfig>;
+}
+
+@section Header{
+    @Styles.Render("~/Content/css/homeindex.css")
+}
+
+<div class="container">
+    @*图片轮滑*@
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            @for (int i = 0; i <= carousels.Count - 1; i++)
+            {
+                if (i == 0)
+                {
+                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                }
+                else
+                {
+                    <li data-target="#carousel-example-generic" data-slide-to="@i"></li>
+                }
+            }
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox" id="divCarousel">
+            @for (int i = 0; i <= carousels.Count - 1; i++)
+            {
+                var item = carousels[i];
+                if (i == 0)
+                {
+                    <div class="item active">
+                        <a target="_blank" href="#"><img width="100%" src="@item.NetworkRelativePath" alt="@(item.MusicName + item.MusicDescription)"></a>
+                        <div class="carousel-caption">
+                            <h3>@item.MusicName</h3>
+                            <p>@item.MusicDescription</p>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="item">
+                        <a target="_blank" href="#"><img width="100%" src="@item.NetworkRelativePath" alt="@(item.MusicName + item.MusicDescription)"></a>
+                        <div class="carousel-caption">
+                            <h3>@item.MusicName</h3>
+                            <p>@item.MusicDescription</p>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">上一张</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">下一张</span>
+        </a>
+    </div>
+    @*热门音乐*@
+    <div class="row" style="padding:0 7px;">
+        <div class="col-md-12 movie-item-out">
+            <h5 style="padding-left:10px;border-left:8px solid #00A6DE;">热门音乐：</h5>
+        </div>
+        <div class="col-md-2 col-sm-6 col-xs-6 movie-item-out">
+            <div class="movie-item">
+                <a style="position:relative;display:block;" title="测试" target="_blank" href="#">
+                    <img class="indexhot" title="测试" alt="测试" src="">
+                    <button class="tag">测试</button>
+                </a>
+                <div class="meta">
+                    <div style="width:100%;overflow:hidden;height:20px;"><a target="_blank" title="测试" class="movie-name" href="#">测试</a></div>
+                    <em>播放次数：70900</em>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*最近更新*@
+    <div class="row" style="padding:0 7px;">
+        <div class="col-md-12 movie-item-out">
+            <h5 style="padding-left:10px;border-left:8px solid #00A6DE;">最近更新：</h5>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-6 movie-item-out">
+            <div class="movie-item">
+                <a style="position:relative;display:block;" title="测试" target="_blank" href="#">
+                    <img alt="测试" title="测试" class="hotimg" src="">
+                    <button class="tag">情感</button>
+                </a>
+                <div class="meta">
+                    <div style="width:100%;overflow:hidden;height:20px;"><a target="_blank" title="爱的死后报告2" href="#" class="movie-name">测试</a><span class="otherinfo"></span></div>
+                    <div class="otherinfo">类型：<a target="_blank" href="#" class="movietype">剧情</a><a target="_blank" href="#" class="movietype">喜剧</a><a target="_blank" href="#" class="movietype">爱情</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div><a target="_blank" class="btn btn-primary btn-block" href="#"><i class="glyphicon glyphicon-fire"> </i> 更多热门音乐 » </a></div>
+</div>
+
+@section Footer{
+
+}

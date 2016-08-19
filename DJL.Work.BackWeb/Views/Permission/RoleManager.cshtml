@@ -1,0 +1,137 @@
+﻿@Styles.Render("~/Content/css/permission/role.css")
+
+@*表格*@
+<div style="width:960px;height:470px;">
+    <table id="tableRoleManager"></table>
+</div>
+
+@*菜单项*@
+<div id="tbMenu_role">
+    <a id="btn_role_refresh" href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-reload',plain:false,text:'刷新',size:'large'"></a>
+    <a id="btn_role_add" href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:false,text:'添加',size:'large'"></a>
+    <a id="btn_role_edit" href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:false,text:'修改',size:'large'"></a>
+    <a id="btn_role_lookUsers" href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:false,text:'查看当前角色所属管理员',size:'large'"></a>
+    <a id="btn_role_setActions" href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:false,text:'查看或者设置权限',size:'large'"></a>
+    @{
+        Html.RenderPartial("_SearchForPermission");
+    }
+</div>
+
+@*查看角色使用者*@
+<div id="div_role_lookUsers" title="查看角色使用者" class="easyui-dialog" data-options="iconCls:'icon-search',resizable:false,modal:true,closed:true,buttons:'#btns_role_lookUsers'" style="height:500px;width:700px;">
+    <div id="div_role_users_list"></div>
+</div>
+
+<div id="btns_role_lookUsers">
+    <a href="javascript:void(0);" class="easyui-linkbutton" onclick="$('#div_role_lookUsers').dialog('close');">关闭</a>
+</div>
+
+@*设置权限*@
+<div id="div_role_setActions" title="设置权限(Ctrl+左键多选-Shift批量选择)" class="easyui-dialog" data-options="iconCls:'icon-search',resizable:false,modal:true,closed:true,buttons:'#btns_role_setActions'" style="height:500px;width:700px;">
+    <div id="div_role_actions_list"></div>
+</div>
+
+<div id="btns_role_setActions">
+    <div style="float:left">
+        <a href="javascript:void(0);" class="easyui-linkbutton" onclick="window.Role.selectedAllActions()">全选</a>
+        <a style="margin-left:10px;" href="javascript:void(0);" class="easyui-linkbutton" onclick="window.Role.unselectedActions()">反选</a>
+    </div>
+
+    <a href="javascript:void(0);" class="easyui-linkbutton" onclick="window.Role.editActionsSave();">保存</a>
+    <a href="javascript:void(0);" class="easyui-linkbutton" onclick="$('#div_role_setActions').dialog('close');">关闭</a>
+</div>
+
+@*添加*@
+<div id="div_role_add" class="easyui-dialog" title="角色添加" style="width:450px;height:500px;"
+     data-options="iconCls:'icon-save',resizable:false,modal:true,closed:true,buttons:'#btns_role_add'">
+    <form id="form_save_role" method="post">
+        @Html.AntiForgeryToken()
+        <div class="form-item">
+            <label>角色名：</label>
+            <input class="easyui-textbox" data-options="prompt:'请输入角色名...',
+                   icons:[{
+		           iconCls:'icon-clear',
+		           handler: function(e){
+			           $(e.data.target).textbox('clear');
+		           }}],
+                   required:true,
+                   validType:['length[1,18]'],
+                   width:180,height:25" id="txt_roleName" name="RoleName" />
+        </div>                        
+        <div class="form-item">
+            <label>是否启用:</label>
+            <input id="txt_roleAvailable" class="easyui-switchbutton">
+        </div>
+        <input type="hidden" id="hid_txt_roleAvailable" name="Available" />
+        <div class="form-item">
+            <label>设置权限:</label>
+            <input id="txt_roleActions" name="RoleActions" class="easyui-combobox" data-options="required:true,multiple:true,editable:false,valueField:'id',textField:'text',width:180,height:30" />
+        </div>
+        <div class="form-item">
+            <label>备注:</label>
+            <input id="txt_roleRemark" name="Remark" class="easyui-textbox" data-options="prompt:'请输入您的备注...',multiline:true,
+                   icons:[{
+		           iconCls:'icon-clear',
+		           handler: function(e){
+			           $(e.data.target).textbox('clear');
+		           }}],
+                   required:true,
+                   validType:['length[1,100]'],
+                   width:180,height:200" />
+        </div>
+    </form>
+</div>
+
+<div id="btns_role_add">
+    <a href="javascript:void(0);" class="easyui-linkbutton" onclick="window.Role.addSaveRole();">保存</a>
+    <a href="javascript:void(0);" class="easyui-linkbutton" onclick="$('#div_role_add').dialog('close');">关闭</a>
+</div>
+
+@*修改*@
+<div id="div_role_edit" class="easyui-dialog" title="角色修改" style="width:450px;height:500px;"
+     data-options="iconCls:'icon-save',resizable:false,modal:true,closed:true,buttons:'#btns_role_edit'">
+    <form id="form_edit_role" method="post">
+        @Html.AntiForgeryToken()
+        <input id="hid_txt_edit_roleId" type="hidden" name="RoleId"/>
+        <div class="form-item">
+            <label>角色名：</label>
+            <input class="easyui-textbox" data-options="prompt:'请输入角色名...',
+                   icons:[{
+		           iconCls:'icon-clear',
+		           handler: function(e){
+			           $(e.data.target).textbox('clear');
+		           }}],
+                   required:true,
+                   validType:['length[1,18]'],
+                   width:180,height:25" id="txt_roleName_edit" name="RoleName" />
+        </div>
+        <div class="form-item">
+            <label>是否启用:</label>
+            <input id="txt_roleAvailable_edit" class="easyui-switchbutton">
+        </div>
+        <input type="hidden" id="hid_txt_roleAvailable_edit" name="Available" />
+        <div class="form-item">
+            <label>设置权限:</label>
+            <input id="txt_roleActions_edit" name="RoleActions" class="easyui-combobox" data-options="required:true,multiple:true,editable:false,valueField:'id',textField:'text',width:180,height:30" />
+        </div>
+        <div class="form-item">
+            <label>备注:</label>
+            <input id="txt_roleRemark_edit" name="Remark" class="easyui-textbox" data-options="prompt:'请输入您的备注...',multiline:true,
+                   icons:[{
+		           iconCls:'icon-clear',
+		           handler: function(e){
+			           $(e.data.target).textbox('clear');
+		           }}],
+                   required:true,
+                   validType:['length[1,100]'],
+                   width:180,height:200" />
+        </div>
+    </form>
+</div>
+
+<div id="btns_role_edit">
+    <a href="javascript:void(0);" class="easyui-linkbutton" onclick="window.Role.editSaveRole();">保存</a>
+    <a href="javascript:void(0);" class="easyui-linkbutton" onclick="$('#div_role_edit').dialog('close');">关闭</a>
+</div>
+
+@Scripts.Render("~/Content/js/permission/role.js")

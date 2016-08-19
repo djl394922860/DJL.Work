@@ -1,0 +1,71 @@
+﻿.txt-center {
+    text-align: center;
+}
+
+#footer {
+    margin: 16px 0 0 0;
+    font-size: 12px;
+}
+
+#divHeaderMenu {
+    margin-right: 5px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+
+    #divHeaderMenu span {
+        font-size: 12px;
+    }
+
+    #divHeaderMenu a {
+        height: 40px;
+        padding-top: 20px;
+        border: solid 2px #c29999;
+        border-radius: 10px;
+        background-color: rgba(176, 166, 166, 0.63);
+    }
+
+        #divHeaderMenu a:hover {
+            background-color: rgba(241, 218, 85, 0.63);
+        }
+
+.selected {
+    background-color: rgba(241, 218, 85, 0.63);
+}
+
+#formEditInfo {
+    font-size: 15px;
+    padding: 0;
+}
+
+    #formEditInfo .form-item {
+        margin: 7px 0 7px 25px;
+    }
+
+        #formEditInfo .form-item label {
+            width: 100px;
+            display: inline-block;
+            margin-right: 40px;
+        }
+
+#divMenu ul {
+    list-style-type: none;
+    font-size: 15px;
+    padding-left: 0;
+    text-align: center;
+}
+
+    #divMenu ul li {
+        margin-top: 10px;
+    }
+
+        #divMenu ul li a {
+            width: 90%;
+            border: solid 2px #c29999;
+            border-radius: 2px;
+            background-color: #beb8b8;
+        }
+
+            #divMenu ul li a:hover {
+                background-color: rgba(225, 178, 105, 0.81);
+            }

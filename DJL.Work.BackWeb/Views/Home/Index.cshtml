@@ -1,0 +1,206 @@
+﻿@model DJL.Work.BackWeb.Models.HomeIndexModel
+
+@{
+    ViewBag.Title = "音乐控制台";
+    var result = Model.WeatherModel.results[0];
+}
+
+@section Header{
+    @Styles.Render("~/Content/HomeIndex.css")
+}
+
+@*header*@
+<div class="divHeader" data-options="region:'north',title:'在线音乐管理后台',split:true,collapsible:false,headerCls:'txt-center'" style="height:100px;width:100%">
+    <img src="/Content/logo.png" style="height:60px;" />
+    <div id="divHeaderMenu" style="float:right;">
+        <em>
+            <span style="font-size:23px;">@(string.Format("时间:{0};Pm2.5:{1};当前城市:{2};天气:{3};温度:{4}", Model.WeatherModel.date, result.pm25, result.currentCity, result.weather_data[0].weather, result.weather_data[0].temperature))<img width="20" height="20" src="@result.weather_data[0].dayPictureUrl" /><img width="20" height="20" src="@result.weather_data[0].nightPictureUrl" /></span>
+        </em>
+        <span id="span_adminName" style="font-size:20px;">欢迎：@Model.ManagerName</span>
+        <a href="javascript:void(0)" title="修改个人信息" data-options="position:'left',iconCls:'icon-edit'" class="easyui-linkbutton easyui-tooltip">修改个人信息</a>
+        <a href="/Home/Logout" title="退出系统" data-options="position:'left',iconCls:'icon-redo'" class="easyui-linkbutton easyui-tooltip">退出系统</a>
+    </div>
+</div>
+
+<div id="divInfoDialog" class="easyui-dialog" title="管理员个人信息" style="width:400px;height:500px;"
+     data-options="iconCls:'icon-edit',resizable:false,modal:true,closed:true,buttons:'#btns'">
+    <form id="formEditInfo">
+        <div class="form-item">
+            <label>姓名:</label>
+            <input class="easyui-textbox" data-options="prompt:'请输入您的姓名...',
+                   icons:[{
+		           iconCls:'icon-clear',
+		           handler: function(e){
+			           $(e.data.target).textbox('clear');
+		           }}],
+                   required:true,
+                   validType:['length[1,18]'],readonly:false,editable:true,
+                   width:180,height:25" id="txtName" name="Name" />
+        </div>
+        <div class="form-item">
+            <label>选择修改密码:</label>
+            <input id="sb" class="easyui-switchbutton" data-options="onText:'Yes',offText:'No'">
+        </div>
+        <div id="wrap">
+            <div class="form-item">
+                <label>原密码:</label>
+                <input id="txtOldPwd" name="OldPwd" class="easyui-textbox" data-options="prompt:'请输入您的密码...',type:'password',
+                   icons:[{
+		           iconCls:'icon-clear',
+		           handler: function(e){
+			           $(e.data.target).textbox('clear');
+		           }}],
+                   required:false,
+                   validType:['length[6,18]'],
+                   width:180,height:25" />
+            </div>
+            <div class="form-item">
+                <label>新密码:</label>
+                <input id="txtNewPwd" name="NewPwd" class="easyui-textbox" data-options="prompt:'请输入您的新密码...',type:'password',
+                   icons:[{
+		           iconCls:'icon-clear',
+		           handler: function(e){
+			           $(e.data.target).textbox('clear');
+		           }}],
+                   required:false,
+                   width:180,height:25" validtype="noEquals['#txtOldPwd']" />
+            </div>
+            <div class="form-item">
+                <label>重复密码:</label>
+                <input id="txtConfirmPwd" name="ConfirmPwd" class="easyui-textbox" data-options="prompt:'请再次输入密码...',type:'password',
+                   icons:[{
+		           iconCls:'icon-clear',
+		           handler: function(e){
+			           $(e.data.target).textbox('clear');
+		           }}],
+                   required:false,
+                   width:180,
+                   height:25" validtype="equals['#txtNewPwd']" />
+            </div>
+        </div>
+        <div class="form-item">
+            <label>邮箱:</label>
+            <input id="txtEmail" name="Email" class="easyui-textbox" data-options="prompt:'请输入您的邮箱...',
+                   icons:[{
+		           iconCls:'icon-clear',
+		           handler: function(e){
+			           $(e.data.target).textbox('clear');
+		           }}],
+                   required:true,
+                   validType:['email','length[6,32]'],
+                   width:180,height:25" />
+        </div>
+        <div class="form-item">
+            <label>备注:</label>
+            <input id="txtRemark" name="Remark" class="easyui-textbox" data-options="prompt:'请输入您的备注...',multiline:true,
+                   icons:[{
+		           iconCls:'icon-clear',
+		           handler: function(e){
+			           $(e.data.target).textbox('clear');
+		           }}],
+                   required:true,
+                   validType:['length[1,100]'],
+                   width:180,height:200" />
+        </div>
+        @Html.AntiForgeryToken()
+        <input type="hidden" id="hidIsUpdatedPwd" name="IsUpdatedPwd" />
+        <input type="hidden" id="hidId" name="Id" />
+    </form>
+</div>
+
+<div id="btns">
+    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="window.Admin.save();">保存</a>
+    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="$('#divInfoDialog').dialog('close');">关闭</a>
+</div>
+
+@*footer*@
+<div data-options="region:'south',split:false,collapsible:false,noheader:true,bodyCls:'txt-center'" style="height: 50px; background-color: #E0ECFF; width: 100%; font-weight: bold;">
+    <div id="footer">
+        版权所有 2016.3.1 by djl
+    </div>
+</div>
+
+@*right*@
+<div data-options="region:'east',title:'其他',split:true,collapsible:true,headerCls:'txt-center',iconCls:'icon-help'" style="width:15%;">
+    @*日历*@
+    <div id="divCalendar" class="easyui-calendar" data-options="fit:false,border:true" style="width:100%;height:180px;"></div>
+</div>
+
+@*left*@
+<div data-options="region:'west',title:'功能区',split:true,collapsible:true,headerCls:'txt-center',iconCls:'icon-large-chart'" style="width:15%;">
+    <div id="divMenu" class="easyui-accordion" data-options="fit:true,animate:true,multiple:false">
+        <div title="网站基本信息管理" data-options="iconCls:'icon-help'">
+            <ul>
+                <li>
+                    <a href="/WebSiteSetting/BaseStatusLook" class="easyui-linkbutton">网站基本运行状态查看</a>
+                </li>
+                <li>
+                    <a href="/WebSiteSetting/CarouselCanfig" class="easyui-linkbutton">前台轮播设置</a>
+                </li>
+                <li><a href="/WebSiteSetting/BaseConfig" class="easyui-linkbutton">配置信息设置</a></li>
+                <li><a href="/WebSiteSetting/LogManager" class="easyui-linkbutton">网站日志管理</a></li>
+            </ul>
+        </div>
+        <div title="资源文件管理" data-options="iconCls:'icon-search'">
+            <ul>
+                <li><a href="/ResourceManager/MusicManager" class="easyui-linkbutton">音乐管理</a></li>
+                <li><a href="/ResourceManager/MusicTypeManager" class="easyui-linkbutton">音乐类型管理</a></li>
+                <li><a href="/ResourceManager/MusicLycManager" class="easyui-linkbutton">音乐歌词管理</a></li>
+                <li><a href="/ResourceManager/MusicPlayerManager" class="easyui-linkbutton">歌手管理</a></li>
+            </ul>
+        </div>
+        <div title="会员管理" data-options="iconCls:'icon-man'">
+            <ul>
+                <li><a href="/MemberManager/Search" class="easyui-linkbutton">信息查询</a></li>
+                <li><a href="/MemberManager/SealManager" class="easyui-linkbutton">封号管理</a></li>
+            </ul>
+        </div>
+        <div title="权限管理" data-options="iconCls:'icon-lock'">
+            <ul>
+                <li><a href="/Permission/UserManager" class="easyui-linkbutton">管理员管理</a></li>
+                <li><a href="/Permission/RoleManager" class="easyui-linkbutton">角色管理</a></li>
+                <li><a href="/Permission/UrlActionManager" class="easyui-linkbutton">访问路径权限管理</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+@*body*@
+<div data-options="region:'center',noheader:true,fit:true">
+    <div id="divTabs" class="easyui-tabs" style="width:100%;height:100%">
+        <div title="首页">
+            我是首页
+        </div>
+    </div>
+</div>
+
+@*tab菜单项*@
+<div id="divTabMenus" class="easyui-menu" style="width: 120px;">
+    <div id="mm-refresh" name="6">
+        刷新
+    </div>
+    <div id="mm-tabclose" name="1">
+        关闭
+    </div>
+    <div id="mm-tabcloseall" name="2">
+        全部关闭
+    </div>
+    <div id="mm-tabcloseother" name="3">
+        除此之外全部关闭
+    </div>
+    <div class="menu-sep">
+    </div>
+    <div id="mm-tabcloseright" name="4">
+        当前页右侧全部关闭
+    </div>
+    <div id="mm-tabcloseleft" name="5">
+        当前页左侧全部关闭
+    </div>
+</div>
+
+@section Footer{
+    @Scripts.Render("~/Content/js/easyui.basedefault.js", "~/Content/js/homeindex.js", "~/Content/easyui/jquery.password.js")
+    @Scripts.Render("~/Content/chart/highcharts.js")
+    @Scripts.Render("~/Content/js/prototype.extend.js")
+}
+
